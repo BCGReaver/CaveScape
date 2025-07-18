@@ -2187,7 +2187,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -230, y: -150}
+  m_AnchoredPosition: {x: -230, y: -180}
   m_SizeDelta: {x: 391.0725, y: 108.5175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1603854977
@@ -2762,7 +2762,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 389430054}
   detectionRadius: 5
-  speed: 3
+  speed: 5
 --- !u!95 &1889375585
 Animator:
   serializedVersion: 7
@@ -2898,7 +2898,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 230, y: -150}
+  m_AnchoredPosition: {x: 230, y: -180}
   m_SizeDelta: {x: 391.0725, y: 108.5175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1947462321
@@ -6686,7 +6686,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4754140945835329238, guid: eb4d01e643c4f0140838a79d18dd535a, type: 3}
+  m_Sprite: {fileID: -7864248523435920715, guid: e7ac597065f09cf4d87f64243a51271d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
