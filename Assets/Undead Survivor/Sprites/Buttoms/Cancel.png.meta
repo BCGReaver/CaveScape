@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: 953cfcd48392cea45bf91bf371483bc2
+guid: d8ccb92b2db94434582d0b6db7e721b6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 583502358785514905
-    second: Minero_0
-  - first:
-      213: 8119532137992598572
-    second: Minero_1
-  - first:
-      213: -1916931715230171568
-    second: Minero_2
-  - first:
-      213: 137224153838459256
-    second: Minero_3
-  - first:
-      213: 1969952126603303618
-    second: Minero_4
+      213: -2357659898952462716
+    second: Cancel_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -63,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -112,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Minero_0
+      name: Cancel_0
       rect:
         serializedVersion: 2
         x: 6
-        y: 43
-        width: 16
-        height: 21
+        y: 50
+        width: 244
+        height: 53
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,96 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 99d5305cd44091800800000000000000
-      internalID: 583502358785514905
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Minero_1
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 43
-        width: 16
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c24ba6bd57f5ea070800000000000000
-      internalID: 8119532137992598572
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Minero_2
-      rect:
-        serializedVersion: 2
-        x: 42
-        y: 43
-        width: 16
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 05e7607e2c0b565e0800000000000000
-      internalID: -1916931715230171568
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Minero_3
-      rect:
-        serializedVersion: 2
-        x: 6
-        y: 21
-        width: 16
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 879152014a487e100800000000000000
-      internalID: 137224153838459256
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Minero_4
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 21
-        width: 16
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2ca17ba950da65b10800000000000000
-      internalID: 1969952126603303618
+      spriteID: 48e41c530d8e74fd0800000000000000
+      internalID: -2357659898952462716
       vertices: []
       indices: 
       edges: []
@@ -234,12 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Minero_0: 583502358785514905
-      Minero_1: 8119532137992598572
-      Minero_2: -1916931715230171568
-      Minero_3: 137224153838459256
-      Minero_4: 1969952126603303618
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
