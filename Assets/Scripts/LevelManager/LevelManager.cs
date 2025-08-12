@@ -38,6 +38,16 @@ public class LevelManager : MonoBehaviour
     }
     public void ExitToMainMenu()
     {
+        Time.timeScale = 1.0f; 
         SceneManager.LoadScene(0);
+    }
+
+    public void Salir()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
 }

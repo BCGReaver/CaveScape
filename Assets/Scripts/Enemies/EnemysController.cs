@@ -9,6 +9,7 @@ public class EnemysController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 movement;
     private bool inMovement;
+    private bool receivingDamage;
     private Animator animator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -58,6 +59,27 @@ public class EnemysController : MonoBehaviour
 
             collision.gameObject.GetComponent<PlayerController>().receiveDamage(directionDamage, 1);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Kick"))
+        {
+            Vector2 directionDamage = new Vector2(collision.gameObject.transform.position.x, 0);
+
+            receiveDamage(directionDamage, 1);
+        }
+    }
+
+    public void receiveDamage(Vector2 direction, int amountDamage)
+    {
+        if (!receivingDamage)
+        {
+            receivingDamage = true;
+            Vector2 rebound = new Vector2(transform.position.x - direction.x, 1).normalized;
+            //rb.AddForce(rebound * reboundForce, ForceMode2D.Impulse);
+        }
+
     }
 
     private void OnDrawGizmos()
