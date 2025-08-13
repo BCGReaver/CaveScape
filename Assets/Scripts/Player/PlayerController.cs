@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
         crystals++;
         textMeshPro.text = (crystals.ToString() + " x");
 
-        if (crystals == 3)
+        if (crystals == 30)
         {
             won_Canvas.SetActive(true);
             Time.timeScale = 0.0f;
