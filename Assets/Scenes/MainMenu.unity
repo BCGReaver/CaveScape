@@ -796,6 +796,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 134f3972c3504614999dc7e99967c5df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playButton: {fileID: 862997107}
+  lobbyScene: Lobby
 --- !u!4 &309535140
 Transform:
   m_ObjectHideFlags: 0
@@ -1703,7 +1705,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 309535139}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: StartGame
+        m_MethodName: GoLobby
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

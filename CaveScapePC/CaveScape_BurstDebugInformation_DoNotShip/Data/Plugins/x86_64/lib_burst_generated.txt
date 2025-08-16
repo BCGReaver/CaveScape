@@ -10,6 +10,7 @@ Library: C:\Universidad\CaveScape\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst
 --linker-options=PdbAltPath="CaveScape_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=C:\Universidad\CaveScape\Temp\Burst
+--debug=Full
 --key-folder=C:/Program Files/Unity/Hub/Editor/6000.0.23f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
 --decode-folder=C:\Universidad\CaveScape\Library\Burst
 --output=C:\Universidad\CaveScape\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
@@ -70,6 +71,7 @@ Library: C:\Universidad\CaveScape\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst
 --linker-options=PdbAltPath="CaveScape_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=C:\Universidad\CaveScape\Temp\Burst
+--debug=Full
 --key-folder=C:/Program Files/Unity/Hub/Editor/6000.0.23f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
 --decode-folder=C:\Universidad\CaveScape\Library\Burst
 --output=C:\Universidad\CaveScape\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
