@@ -7,6 +7,8 @@ TagManager:
   - Kick
   - SpawnPoint_0
   - SpawnPoint_1
+  - Bullet
+  - Spawn
   layers:
   - Default
   - TransparentFX

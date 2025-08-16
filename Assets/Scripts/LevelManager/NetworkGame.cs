@@ -1,52 +1,90 @@
+using Photon.Pun;
 using UnityEngine;
 using System.Linq;
-using Photon.Pun;
 
-public class NetworkSpawner : MonoBehaviour
+public class NetworkSpawner : MonoBehaviourPunCallbacks
 {
-    [SerializeField] string playerPrefabPath = "Player"; // ruta dentro de Resources
-    Transform[] spawns;
+    [Header("Prefab en Resources/")]
+    [SerializeField] private string playerPrefabPath = "Player"; // Resources/Player.prefab
+
+    [Header("Tag de los puntos de spawn")]
+    [SerializeField] private string spawnTag = "Spawn";
+
+    private Transform[] spawns;
 
     void Awake()
     {
-        // Recolecta y ordena spawns por nombre para tener el mismo orden en todos los clientes
-        spawns = GameObject.FindGameObjectsWithTag("Spawn")
+        CacheSpawns();
+    }
+
+    void Start()
+    {
+        // Por si esta escena se carga ya estando en una Room:
+        TrySpawnIfNeeded("[Start]");
+    }
+
+    public override void OnJoinedRoom()
+    {
+        // Por si entras a la Room y aún no has spawneado:
+        TrySpawnIfNeeded("[OnJoinedRoom]");
+    }
+
+    private void CacheSpawns()
+    {
+        spawns = GameObject.FindGameObjectsWithTag(spawnTag)
                  .OrderBy(go => go.name)
                  .Select(go => go.transform)
                  .ToArray();
 
         if (spawns.Length == 0)
-            Debug.LogError("No encontré spawns con Tag 'Spawn' en la escena.");
+            Debug.LogError($"[Spawner] No encontré spawns con Tag '{spawnTag}' en la escena.");
     }
 
-    void Start()
+    private void TrySpawnIfNeeded(string caller)
     {
-        Debug.Log($"[Spawner] Estado: InRoom={PhotonNetwork.InRoom}, Scene={UnityEngine.SceneManagement.SceneManager.GetActiveScene().name}");
-
         if (!PhotonNetwork.InRoom)
         {
-            Debug.LogError("No estás en una Room. Llega a GameScene usando PhotonNetwork.LoadLevel luego de unirte/crear sala.");
+            Debug.LogWarning($"[Spawner]{caller} No estás en una Room, no spawneo.");
             return;
         }
 
-        // evita doble spawn si recargas o vuelves a la escena
+        // Evita doble spawn (p.ej. recarga de escena)
         if (PhotonNetwork.LocalPlayer.TagObject != null)
         {
-            Debug.Log("[Spawner] Ya tenía un player asociado, no instancio de nuevo.");
+            BindCameraToLocal(PhotonNetwork.LocalPlayer.TagObject as GameObject);
             return;
         }
 
+        if (spawns == null || spawns.Length == 0)
+            CacheSpawns();
+
         int index = (PhotonNetwork.LocalPlayer.ActorNumber - 1) % spawns.Length;
-        var spawn = spawns[index];
+        Transform spawn = spawns[index];
 
-        var playerGO = PhotonNetwork.Instantiate(playerPrefabPath, spawn.position, spawn.rotation);
-        Debug.Log($"[Spawner] Instancié {playerPrefabPath} para Actor #{PhotonNetwork.LocalPlayer.ActorNumber} en {spawn.name}.");
-
-        // Guarda referencia para no respawnear si reentras
+        GameObject playerGO = PhotonNetwork.Instantiate(playerPrefabPath, spawn.position, spawn.rotation);
         PhotonNetwork.LocalPlayer.TagObject = playerGO;
 
-        // (Opcional) Si usas cámara de seguimiento simple, asígnala aquí
-        // var follow = Camera.main ? Camera.main.GetComponent<SimpleFollow>() : null;
-        // if (follow && playerGO.GetComponent<PhotonView>().IsMine) follow.target = playerGO.transform;
+        BindCameraToLocal(playerGO);
+
+        Debug.Log($"[Spawner]{caller} Instancié '{playerPrefabPath}' para Actor #{PhotonNetwork.LocalPlayer.ActorNumber} en {spawn.name}.");
+    }
+
+    private void BindCameraToLocal(GameObject playerGO)
+    {
+        if (!playerGO) return;
+
+        var pv = playerGO.GetComponent<PhotonView>();
+        if (pv && pv.IsMine)
+        {
+            var cam = Camera.main;
+            if (cam)
+            {
+                var follow = cam.GetComponent<CameraController>();
+                if (follow) follow.objetive = playerGO.transform;
+
+                var al = cam.GetComponent<AudioListener>();
+                if (al) al.enabled = true;
+            }
+        }
     }
 }
