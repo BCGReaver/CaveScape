@@ -9,6 +9,10 @@ TagManager:
   - SpawnPoint_1
   - Bullet
   - Spawn
+  - HUD_CrystalText
+  - HUD_HeartsRoot
+  - CrystalMarker
+  - HUD_LoseCanvas
   layers:
   - Default
   - TransparentFX
@@ -16,8 +20,8 @@ TagManager:
   - Floor
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Collectible
   - 
   - 
   - 

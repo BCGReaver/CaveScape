@@ -1,88 +1,95 @@
+using System.Linq;
 using UnityEngine;
+using Photon.Pun;
 
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
 public class EnemysController : MonoBehaviour
 {
-    public Transform player;
-    public float detectionRadius = 5.0f;
-    public float speed = 2.0f;
+    [Header("Movimiento")]
+    public float detectionRadius = 5f;
+    public float speed = 2f;
 
-    private Rigidbody2D rb;
-    private Vector2 movement;
-    private bool inMovement;
-    private bool receivingDamage;
-    private Animator animator;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [Header("Daño de contacto")]
+    public int contactDamage = 1;
+    public float hitCooldown = 0.75f;
+
+    Rigidbody2D rb;
+    Animator animator;
+
+    float lastHitTime = -999f;
+    Transform target;
+
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+        if (target == null || !target.gameObject.activeInHierarchy)
+            target = FindClosestPlayer();
 
-        if (distanceToPlayer < detectionRadius)
+        Vector2 movement = Vector2.zero;
+        bool inMovement = false;
+
+        if (target != null)
         {
-            Vector2 direction = (player.position - transform.position).normalized;
-
-            if (direction.x < 0)
+            float dist = Vector2.Distance(transform.position, target.position);
+            if (dist <= detectionRadius)
             {
-                transform.localScale = new Vector3(-1, 1, 1);
-            }
-            if (direction.x > 0)
-            {
-                transform.localScale = new Vector3(1, 1, 1);
-            }
+                Vector2 dir = (target.position - transform.position).normalized;
+                if (dir.x < 0) transform.localScale = new Vector3(-1, 1, 1);
+                else if (dir.x > 0) transform.localScale = new Vector3(1, 1, 1);
 
-            movement = new Vector2(direction.x, direction.y);
-
-            inMovement = true;
-        }
-        else
-        {
-            movement = Vector2.zero;
-            inMovement = false;
+                movement = dir;
+                inMovement = true;
+            }
         }
 
         rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
-
         animator.SetBool("inMovement", inMovement);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    Transform FindClosestPlayer()
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Vector2 directionDamage = new Vector2(transform.position.x, 0);
+        var players = FindObjectsOfType<PlayerController>();
+        if (players == null || players.Length == 0) return null;
 
-            collision.gameObject.GetComponent<PlayerController>().receiveDamage(directionDamage, 1);
-        }
+        return players.OrderBy(p => (p.transform.position - transform.position).sqrMagnitude)
+                      .First().transform;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnCollisionEnter2D(Collision2D col)
     {
-        if (collision.CompareTag("Kick"))
-        {
-            Vector2 directionDamage = new Vector2(collision.gameObject.transform.position.x, 0);
-
-            receiveDamage(directionDamage, 1);
-        }
+        if (col.contactCount > 0) TryDamage(col.collider, col.GetContact(0).point);
+    }
+    void OnCollisionStay2D(Collision2D col)
+    {
+        if (col.contactCount > 0) TryDamage(col.collider, col.GetContact(0).point);
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        TryDamage(other, other.transform.position);
     }
 
-    public void receiveDamage(Vector2 direction, int amountDamage)
+    void TryDamage(Collider2D col, Vector3 hitPos)
     {
-        if (!receivingDamage)
-        {
-            receivingDamage = true;
-            Vector2 rebound = new Vector2(transform.position.x - direction.x, 1).normalized;
-            //rb.AddForce(rebound * reboundForce, ForceMode2D.Impulse);
-        }
+        if (Time.time - lastHitTime < hitCooldown) return;
+        if (col == null || !col.CompareTag("Player")) return;
 
+        var pv = col.GetComponent<PhotonView>();
+        if (pv == null) return;
+
+        lastHitTime = Time.time;
+
+        Vector2 dir = ((Vector2)col.transform.position - (Vector2)hitPos).normalized;
+        Debug.Log($"[ENEMY] hit -> {col.name} owner={pv.OwnerActorNr} isMine={pv.IsMine}");
+        pv.RPC(nameof(PlayerController.RPC_ReceiveDamage), pv.Owner, dir, contactDamage);
     }
 
-    private void OnDrawGizmos()
+    void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
