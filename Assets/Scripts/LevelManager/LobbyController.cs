@@ -10,7 +10,7 @@ public class LobbyController : MonoBehaviourPunCallbacks
     [SerializeField] private Button startGameButton;   // opcional si usas “Start”
     [SerializeField] private TextMeshProUGUI statusText;
 
-    private const int MaxPlayers = 1;                  // ajusta a tu necesidad
+    private const int MaxPlayers = 2;                  // ajusta a tu necesidad
     private const string GameVer = "1.0.0";            // usa la MISMA versión en el menú
 
     void Start()

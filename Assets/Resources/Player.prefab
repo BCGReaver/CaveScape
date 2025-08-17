@@ -124,6 +124,8 @@ MonoBehaviour:
   animator: {fileID: 1896938268343905586}
   crystalCounterTag: HUD_CrystalText
   heartsRootTag: HUD_HeartsRoot
+  loseCanvasTag: HUD_LoseCanvas
+  winCanvasTag: HUD_WinCanvas
 --- !u!50 &541836641958870547
 Rigidbody2D:
   serializedVersion: 5

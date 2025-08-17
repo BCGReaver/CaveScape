@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviourPun
 
     [Header("Health")]
     public int vida = 3;
-    public Image[] Heart; // se llena en runtime por tag/nombre
+    public Image[] Heart; // Se llena en runtime (HUDBinder o por TAG)
 
     [Header("UI (opcional, se resuelve por TAG si está vacío)")]
     public GameObject final_Canvas; // derrota
@@ -30,18 +30,19 @@ public class PlayerController : MonoBehaviourPun
 
     public Animator animator;
 
-    // --- internos ---
-    Rigidbody2D rb;
-    bool onFloor, receivingDamage, attacking;
+    // Internos
+    private Rigidbody2D rb;
+    private bool onFloor, receivingDamage, attacking;
 
-    // --- HUD autowire ---
-    TMP_Text crystalText;
-    Health hudHealth; // si tu HUD tiene este script con Image[], se usa primero
+    // HUD
+    private TMP_Text crystalText;
+    private Health hudHealth; // si el HUD tiene este script con hearts, se usa primero
 
-    [SerializeField] string crystalCounterTag = "HUD_CrystalText";
-    [SerializeField] string heartsRootTag = "HUD_HeartsRoot";
-    [SerializeField] string loseCanvasTag = "HUD_LoseCanvas";
-    [SerializeField] string winCanvasTag = "HUD_WinCanvas";
+    // TAGs usados como fallback
+    [SerializeField] private string crystalCounterTag = "HUD_CrystalText";
+    [SerializeField] private string heartsRootTag = "HUD_HeartsRoot";
+    [SerializeField] private string loseCanvasTag = "HUD_LoseCanvas";
+    [SerializeField] private string winCanvasTag = "HUD_WinCanvas";
 
     void Start()
     {
@@ -49,13 +50,19 @@ public class PlayerController : MonoBehaviourPun
 
         if (photonView.IsMine)
         {
-            CacheHUDByTags();       // ← encuentra corazones, contador y canvases por TAG
-            actualizarCorazones();  // estado inicial
+            // Fallback por TAG (por si HUDBinder no está)
+            if (!final_Canvas) final_Canvas = FindWithTagSafe(loseCanvasTag);
+            if (!won_Canvas) won_Canvas = FindWithTagSafe(winCanvasTag);
+            if (final_Canvas) final_Canvas.SetActive(false);
+            if (won_Canvas) won_Canvas.SetActive(false);
+
+            AttemptAutoWireHUD(); // llena Heart[] y crystalText si están vacíos
+
+            actualizarCorazones();
             if (crystalText) crystalText.text = crystals + " x";
         }
         else
         {
-            // asegura que los canvases remotos no se vean
             if (final_Canvas) final_Canvas.SetActive(false);
             if (won_Canvas) won_Canvas.SetActive(false);
         }
@@ -101,7 +108,7 @@ public class PlayerController : MonoBehaviourPun
             transform.position += new Vector3(speedX, 0f, 0f);
     }
 
-    // ========= DAÑO POR RPC =========
+    // ========= Daño por RPC =========
     [PunRPC]
     public void RPC_ReceiveDamage(Vector2 direction, int amountDamage)
     {
@@ -122,8 +129,7 @@ public class PlayerController : MonoBehaviourPun
 
         if (vida <= 0)
         {
-            // Muestra DERROTA solo en este cliente
-            TryShowLose();
+            TryShowLose();         // muestra derrota solo en este cliente
             Time.timeScale = 0.0f; // pausa local
         }
     }
@@ -131,7 +137,7 @@ public class PlayerController : MonoBehaviourPun
     public void desactiveDamage()
     {
         receivingDamage = false;
-        rb.linearVelocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero; // ¡no uses linearVelocity!
     }
 
     public void Attacking() { attacking = true; }
@@ -166,23 +172,55 @@ public class PlayerController : MonoBehaviourPun
         }
     }
 
-    // ================== HUD helpers ==================
-    void CacheHUDByTags()
+    // ========= Métodos que HUDBinder puede llamar (para evitar CS1061) =========
+    public void BindHUD(Image[] heartsFromScene, TMP_Text crystalFromScene)
     {
-        // canvases por TAG
-        if (!final_Canvas) final_Canvas = FindWithTagSafe(loseCanvasTag);
-        if (!won_Canvas) won_Canvas = FindWithTagSafe(winCanvasTag);
+        if (!photonView.IsMine) return;
+
+        if (heartsFromScene != null && heartsFromScene.Length > 0)
+            Heart = heartsFromScene;
+
+        if (crystalFromScene != null)
+            crystalText = crystalFromScene;
+
+        actualizarCorazones();
+        if (crystalText) crystalText.text = crystals + " x";
+    }
+
+    public void BindHUD(Image[] heartsFromScene, TMP_Text crystalFromScene,
+                        GameObject finalCanvasFromScene, GameObject winCanvasFromScene)
+    {
+        if (!photonView.IsMine) return;
+
+        if (heartsFromScene != null && heartsFromScene.Length > 0)
+            Heart = heartsFromScene;
+
+        if (crystalFromScene != null)
+            crystalText = crystalFromScene;
+
+        if (finalCanvasFromScene != null) final_Canvas = finalCanvasFromScene;
+        if (winCanvasFromScene != null) won_Canvas = winCanvasFromScene;
 
         if (final_Canvas) final_Canvas.SetActive(false);
         if (won_Canvas) won_Canvas.SetActive(false);
 
-        // corazones: primero intenta Health script
+        actualizarCorazones();
+        if (crystalText) crystalText.text = crystals + " x";
+    }
+
+    // ========= Helpers HUD =========
+    void AttemptAutoWireHUD()
+    {
+        // canvases por TAG si no los asignó HUDBinder
+        if (!final_Canvas) final_Canvas = FindWithTagSafe(loseCanvasTag);
+        if (!won_Canvas) won_Canvas = FindWithTagSafe(winCanvasTag);
+
+        // hearts: primero intenta script Health
         hudHealth = FindObjectOfType<Health>(true);
         bool healthOk = hudHealth && hudHealth.Heart != null && hudHealth.Heart.Length > 0;
 
         if (!healthOk && (Heart == null || Heart.Length == 0))
         {
-            // busca el root por TAG y toma todos los Image cuyo nombre contenga "heart"
             var root = FindWithTagSafe(heartsRootTag);
             if (root)
             {
@@ -228,6 +266,4 @@ public class PlayerController : MonoBehaviourPun
         if (m.Success && int.TryParse(m.Groups[1].Value, out int n)) return n;
         return 0;
     }
-
-
 }
