@@ -422,7 +422,19 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Minero2_0: -4640146062634566646
+      Minero2_1: 8671723979572411405
+      Minero2_10: -8660122291615822079
+      Minero2_11: 227566707166573787
+      Minero2_2: -8199662077342085611
+      Minero2_3: 6466876424770211016
+      Minero2_4: 3461120736830146034
+      Minero2_5: 2840029431599243007
+      Minero2_6: -5642919749297926760
+      Minero2_7: 7663384397890573846
+      Minero2_8: -5475793518742008913
+      Minero2_9: 7889043594320552321
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

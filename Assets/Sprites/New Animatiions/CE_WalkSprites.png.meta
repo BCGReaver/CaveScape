@@ -1,0 +1,642 @@
+fileFormatVersion: 2
+guid: 6ab334b39b796af4d94afd90ca2c9000
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8146340217632500166
+    second: CE_WalkSprites_0
+  - first:
+      213: 2006567439621826391
+    second: CE_WalkSprites_1
+  - first:
+      213: 8645166814076533972
+    second: CE_WalkSprites_2
+  - first:
+      213: -5254211624081634380
+    second: CE_WalkSprites_3
+  - first:
+      213: 7730081476638031874
+    second: CE_WalkSprites_4
+  - first:
+      213: 5959134482350399954
+    second: CE_WalkSprites_5
+  - first:
+      213: 3791124000265094499
+    second: CE_WalkSprites_6
+  - first:
+      213: 4927849067785910262
+    second: CE_WalkSprites_7
+  - first:
+      213: 9085497095789670919
+    second: CE_WalkSprites_8
+  - first:
+      213: 8307265980915943377
+    second: CE_WalkSprites_9
+  - first:
+      213: -2220980065569931558
+    second: CE_WalkSprites_10
+  - first:
+      213: 6414752711255184768
+    second: CE_WalkSprites_11
+  - first:
+      213: 8418073008574824220
+    second: CE_WalkSprites_12
+  - first:
+      213: 445851585317949163
+    second: CE_WalkSprites_13
+  - first:
+      213: -3638918706068543561
+    second: CE_WalkSprites_14
+  - first:
+      213: 1626541714864029747
+    second: CE_WalkSprites_15
+  - first:
+      213: 6531065461662501824
+    second: CE_WalkSprites_16
+  - first:
+      213: 8119624746673186989
+    second: CE_WalkSprites_17
+  - first:
+      213: 7794114679562107
+    second: CE_WalkSprites_18
+  - first:
+      213: 6125648862467544724
+    second: CE_WalkSprites_19
+  - first:
+      213: -2799321514196034892
+    second: CE_WalkSprites_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CE_WalkSprites_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 639
+        width: 332
+        height: 427
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a365984bbb262fe80800000000000000
+      internalID: -8146340217632500166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CE_WalkSprites_1
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 645
+        width: 254
+        height: 416
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75726808472c8db10800000000000000
+      internalID: 2006567439621826391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CE_WalkSprites_2
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 639
+        width: 283
+        height: 427
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dcf601d96dc9f770800000000000000
+      internalID: 8645166814076533972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CE_WalkSprites_3
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 637
+        width: 324
+        height: 424
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bbc2ebad5a4517b0800000000000000
+      internalID: -5254211624081634380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CE_WalkSprites_4
+      rect:
+        serializedVersion: 2
+        x: 1356
+        y: 991
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20046d3b524c64b60800000000000000
+      internalID: 7730081476638031874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CE_WalkSprites_5
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 622
+        width: 333
+        height: 439
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d1e6452d3913b250800000000000000
+      internalID: 5959134482350399954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CE_WalkSprites_6
+      rect:
+        serializedVersion: 2
+        x: 1334
+        y: 875
+        width: 7
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36542472137cc9430800000000000000
+      internalID: 3791124000265094499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CE_WalkSprites_7
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 799
+        width: 16
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f77e184e9c336440800000000000000
+      internalID: 4927849067785910262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CE_WalkSprites_8
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 700
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 702f26ab87b261e70800000000000000
+      internalID: 9085497095789670919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CE_WalkSprites_9
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 629
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d78e275566594370800000000000000
+      internalID: 8307265980915943377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CE_WalkSprites_10
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 165
+        width: 277
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adefa7ac56e7d21e0800000000000000
+      internalID: -2220980065569931558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CE_WalkSprites_11
+      rect:
+        serializedVersion: 2
+        x: 1364
+        y: 592
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 085d654aa97c50950800000000000000
+      internalID: 6414752711255184768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CE_WalkSprites_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 161
+        width: 323
+        height: 427
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1ff769ecc003d470800000000000000
+      internalID: 8418073008574824220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CE_WalkSprites_13
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 583
+        width: 30
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: beecb6597abff2600800000000000000
+      internalID: 445851585317949163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CE_WalkSprites_14
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 161
+        width: 329
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b7a24677b6ff7dc0800000000000000
+      internalID: -3638918706068543561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CE_WalkSprites_15
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 159
+        width: 291
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33043d66213a29610800000000000000
+      internalID: 1626541714864029747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CE_WalkSprites_16
+      rect:
+        serializedVersion: 2
+        x: 1346
+        y: 159
+        width: 358
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cb473f2f6103aa50800000000000000
+      internalID: 6531065461662501824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CE_WalkSprites_17
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 377
+        width: 10
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da82deeffa3bea070800000000000000
+      internalID: 8119624746673186989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CE_WalkSprites_18
+      rect:
+        serializedVersion: 2
+        x: 1706
+        y: 346
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7f50dcb4b0bb1000800000000000000
+      internalID: 7794114679562107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CE_WalkSprites_19
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 273
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49657227f2da20550800000000000000
+      internalID: 6125648862467544724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CE_WalkSprites_20
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 266
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ba9c3e0aefc629d0800000000000000
+      internalID: -2799321514196034892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
