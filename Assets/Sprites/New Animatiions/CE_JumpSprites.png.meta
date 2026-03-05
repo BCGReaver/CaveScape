@@ -1,70 +1,19 @@
 fileFormatVersion: 2
-guid: 40ed9c4d39fbd284f81164e4c2b81624
+guid: 29b2f7a960df86848bc9228602809f9e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3190881304707292363
-    second: CE_DefeatSprites_0
+      213: 1847560370069114468
+    second: CE_JumpSprites_0
   - first:
-      213: 3622948113431753073
-    second: CE_DefeatSprites_1
+      213: -1108840669135159315
+    second: CE_JumpSprites_1
   - first:
-      213: -5785501256075738768
-    second: CE_DefeatSprites_2
+      213: -1372087416762896300
+    second: CE_JumpSprites_2
   - first:
-      213: -7321523236169714170
-    second: CE_DefeatSprites_3
-  - first:
-      213: -1237284402442104290
-    second: CE_DefeatSprites_4
-  - first:
-      213: 4764256204880896132
-    second: CE_DefeatSprites_5
-  - first:
-      213: -59550956750995628
-    second: CE_DefeatSprites_6
-  - first:
-      213: -1864880469545136972
-    second: CE_DefeatSprites_7
-  - first:
-      213: -7101019816862414478
-    second: CE_DefeatSprites_8
-  - first:
-      213: -549488016295442154
-    second: CE_DefeatSprites_9
-  - first:
-      213: -5777904510622600821
-    second: CE_DefeatSprites_10
-  - first:
-      213: -2315658882260841643
-    second: CE_DefeatSprites_11
-  - first:
-      213: 3116000043159261382
-    second: CE_DefeatSprites_12
-  - first:
-      213: 8012021548479682175
-    second: CE_DefeatSprites_13
-  - first:
-      213: -5741880992576296210
-    second: CE_DefeatSprites_14
-  - first:
-      213: -5666875292253435764
-    second: CE_DefeatSprites_15
-  - first:
-      213: -2056740645712120239
-    second: CE_DefeatSprites_16
-  - first:
-      213: -8507035316296949016
-    second: CE_DefeatSprites_17
-  - first:
-      213: 4138824833506383887
-    second: CE_DefeatSprites_18
-  - first:
-      213: -3099084880714787743
-    second: CE_DefeatSprites_19
-  - first:
-      213: -8747493195359906461
-    second: CE_DefeatSprites_20
+      213: 3067724846993477725
+    second: CE_JumpSprites_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -160,89 +109,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CE_DefeatSprites_20
+      name: CE_JumpSprites_0
       rect:
         serializedVersion: 2
-        x: 1328
-        y: 3
-        width: 543
-        height: 218
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e912632a6d71ca24bbe26060007db530
-      internalID: 620276911
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CE_DefeatSprites_0
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 35
-        width: 343
-        height: 374
+        x: 9
+        y: 657
+        width: 472
+        height: 410
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 566b3b4f9b14dca43a306c2db04ad6a3
-      internalID: -1310068908
+      spriteID: 46e0f072e5ad3a910800000000000000
+      internalID: 1847560370069114468
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CE_DefeatSprites_1
+      name: CE_JumpSprites_1
       rect:
         serializedVersion: 2
-        x: 356
-        y: 20
-        width: 418
-        height: 374
+        x: 486
+        y: 642
+        width: 457
+        height: 431
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 2fe8ef65d11378742a1edbfc34108f52
-      internalID: 1266379126
+      spriteID: def31bb494b9c90f0800000000000000
+      internalID: -1108840669135159315
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CE_DefeatSprites_2
+      name: CE_JumpSprites_2
       rect:
         serializedVersion: 2
-        x: 784
-        y: 13
-        width: 484
-        height: 372
+        x: 579
+        y: 347
+        width: 23
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 17737c6560295d14c8530c8528cc50aa
-      internalID: 1757534805
+      spriteID: 450701b93cd55fce0800000000000000
+      internalID: -1372087416762896300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CE_JumpSprites_3
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 330
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d509fadae7fb29a20800000000000000
+      internalID: 3067724846993477725
       vertices: []
       indices: 
       edges: []
@@ -251,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 4160546d4555fb742998ecb4218a282a
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -260,28 +209,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      CE_DefeatSprites_0: -1310068908
-      CE_DefeatSprites_1: 1266379126
-      CE_DefeatSprites_10: 102210267
-      CE_DefeatSprites_11: 725166833
-      CE_DefeatSprites_12: -1007509922
-      CE_DefeatSprites_13: 412641735
-      CE_DefeatSprites_14: -536083265
-      CE_DefeatSprites_15: -1501383129
-      CE_DefeatSprites_16: 795108572
-      CE_DefeatSprites_17: 1638485588
-      CE_DefeatSprites_18: -1809827118
-      CE_DefeatSprites_19: 1837693277
-      CE_DefeatSprites_2: 1757534805
-      CE_DefeatSprites_20: 620276911
-      CE_DefeatSprites_3: 1722199295
-      CE_DefeatSprites_4: -1387173669
-      CE_DefeatSprites_5: 1698772673
-      CE_DefeatSprites_6: 1451707929
-      CE_DefeatSprites_7: -327670094
-      CE_DefeatSprites_8: -994295401
-      CE_DefeatSprites_9: 383351619
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
