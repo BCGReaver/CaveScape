@@ -15363,6 +15363,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6570259728649828075, guid: 60bba1c3f2e013e4b9ea806f5efd58bb, type: 3}
+      propertyPath: m_SynchronizeLayers.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1134021562252702996, guid: 60bba1c3f2e013e4b9ea806f5efd58bb, type: 3}
+      propertyPath: sceneViewId
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1134021562252702996, guid: 60bba1c3f2e013e4b9ea806f5efd58bb, type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2287727498024985188, guid: 60bba1c3f2e013e4b9ea806f5efd58bb, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.25
