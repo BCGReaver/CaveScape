@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: 29b2f7a960df86848bc9228602809f9e
+guid: 50f0d938807f3e94ea4010489b8cb162
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1847560370069114468
-    second: CE_JumpSprites_0
-  - first:
-      213: -1108840669135159315
-    second: CE_JumpSprites_1
-  - first:
-      213: -1372087416762896300
-    second: CE_JumpSprites_2
-  - first:
-      213: 3067724846993477725
-    second: CE_JumpSprites_3
+      213: -3474580890172162372
+    second: Play Solo_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -122,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CE_JumpSprites_0
+      name: Play Solo_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 657
-        width: 472
-        height: 410
+        x: 1
+        y: 0
+        width: 377
+        height: 127
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,74 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 46e0f072e5ad3a910800000000000000
-      internalID: 1847560370069114468
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CE_JumpSprites_1
-      rect:
-        serializedVersion: 2
-        x: 486
-        y: 642
-        width: 457
-        height: 431
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: def31bb494b9c90f0800000000000000
-      internalID: -1108840669135159315
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CE_JumpSprites_2
-      rect:
-        serializedVersion: 2
-        x: 579
-        y: 347
-        width: 23
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 450701b93cd55fce0800000000000000
-      internalID: -1372087416762896300
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CE_JumpSprites_3
-      rect:
-        serializedVersion: 2
-        x: 652
-        y: 330
-        width: 16
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d509fadae7fb29a20800000000000000
-      internalID: 3067724846993477725
+      spriteID: cbe7de9e61fc7cfc0800000000000000
+      internalID: -3474580890172162372
       vertices: []
       indices: 
       edges: []
@@ -222,11 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      CE_JumpSprites_0: 1847560370069114468
-      CE_JumpSprites_1: -1108840669135159315
-      CE_JumpSprites_2: -1372087416762896300
-      CE_JumpSprites_3: 3067724846993477725
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

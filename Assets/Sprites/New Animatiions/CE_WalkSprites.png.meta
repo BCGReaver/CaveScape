@@ -156,6 +156,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -634,7 +647,28 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      CE_WalkSprites_0: -8146340217632500166
+      CE_WalkSprites_1: 2006567439621826391
+      CE_WalkSprites_10: -2220980065569931558
+      CE_WalkSprites_11: 6414752711255184768
+      CE_WalkSprites_12: 8418073008574824220
+      CE_WalkSprites_13: 445851585317949163
+      CE_WalkSprites_14: -3638918706068543561
+      CE_WalkSprites_15: 1626541714864029747
+      CE_WalkSprites_16: 6531065461662501824
+      CE_WalkSprites_17: 8119624746673186989
+      CE_WalkSprites_18: 7794114679562107
+      CE_WalkSprites_19: 6125648862467544724
+      CE_WalkSprites_2: 8645166814076533972
+      CE_WalkSprites_20: -2799321514196034892
+      CE_WalkSprites_3: -5254211624081634380
+      CE_WalkSprites_4: 7730081476638031874
+      CE_WalkSprites_5: 5959134482350399954
+      CE_WalkSprites_6: 3791124000265094499
+      CE_WalkSprites_7: 4927849067785910262
+      CE_WalkSprites_8: 9085497095789670919
+      CE_WalkSprites_9: 8307265980915943377
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

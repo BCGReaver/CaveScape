@@ -1,78 +1,74 @@
-/**
- * @file MainMenuManager.cs
- * @brief Maneja el botón Play del menú principal y la conexión inicial a Photon.
- *
- * @details
- * Flujo rapidito:
- * - En Start(): deshabilita el botón Play, configura Photon (sync de escena, nickname, versión)
- *   y se conecta con `ConnectUsingSettings()`.
- * - Cuando conecta al Master (`OnConnectedToMaster`): habilita el botón Play.
- * - Al presionar Play (`GoLobby`): carga la escena de Lobby de forma sincronizada.
- * - Si se desconecta (`OnDisconnected`): deshabilita el botón y avisa por consola.
- *
- * Tips:
- * - `AutomaticallySyncScene = true` hace que cuando el Master cambie de escena, todos lo sigan.
- * - El `NickName` aquí lo puse como el nombre del dispositivo; si quieres algo más pro, usa un InputField.
- * - Asegúrate de que la escena `lobbyScene` esté en Build Settings (File > Build Settings).
- */
-
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.SceneManagement;
 
-/**
- * @class MainMenuManager
- * @brief Control del menú principal: conexión a Photon y salto al Lobby.
- */
 public class MainMenuManager : MonoBehaviourPunCallbacks
 {
-    /// @brief Botón de Play del menú (así evitas spamear antes de conectar).
-    [SerializeField] private Button playButton;      // arrástralo desde el Inspector
+    [Header("UI Buttons")]
+    [SerializeField] private Button multiplayerButton; // Botón para ir al Lobby
+    [SerializeField] private Button soloButton;        // Botón para jugar solo
 
-    /// @brief Nombre de la escena del Lobby a cargar cuando presiones Play.
+    [Header("Scenes")]
     [SerializeField] private string lobbyScene = "Lobby";
+    [SerializeField] private string gameScene = "GameScene"; // ¡Asegúrate de poner aquí el nombre exacto de tu escena de nivel!
 
-    /**
-     * @brief Configura Photon y arranca la conexión; deshabilita Play hasta estar online.
-     */
     void Start()
     {
-        playButton.interactable = false;
+        // Por ahora, desactivamos el multi hasta estar conectados al servidor real
+        if (multiplayerButton != null) multiplayerButton.interactable = false;
+        if (soloButton != null) soloButton.interactable = true; // El modo solo siempre está disponible
 
         PhotonNetwork.AutomaticallySyncScene = true;
-        PhotonNetwork.NickName = SystemInfo.deviceName;  // o pide un InputField si quieres
+        PhotonNetwork.NickName = SystemInfo.deviceName;
         PhotonNetwork.GameVersion = "1.0.0";
+
+        // Intentamos conectar para el modo multiplayer al abrir el juego
         PhotonNetwork.ConnectUsingSettings();
     }
 
-    /**
-     * @brief Callback cuando te conectas al Master de Photon.
-     * @details Habilita el botón Play para poder ir al Lobby.
-     */
+    // --- ¡AQUÍ ESTÁ LA CORRECCIÓN! Solo un OnConnectedToMaster ---
     public override void OnConnectedToMaster()
     {
-        Debug.Log("Connected to Master");
-        playButton.interactable = true;
+        Debug.Log("Conectado al Master de Photon. ¿Modo Offline?: " + PhotonNetwork.OfflineMode);
+
+        if (PhotonNetwork.OfflineMode)
+        {
+            // Si el jugador presionó "Solo", Photon se "conecta" en modo offline.
+            // Creamos una sala "fantasma" para que el NetworkSpawner pueda funcionar.
+            PhotonNetwork.CreateRoom("SoloRoom", new RoomOptions { MaxPlayers = 1 });
+        }
+        else
+        {
+            // Si se conectó normal a internet, habilitamos el botón de Multiplayer
+            if (multiplayerButton != null) multiplayerButton.interactable = true;
+        }
     }
 
-    /**
-     * @brief Handler del botón Play: carga la escena de Lobby de forma sincronizada.
-     * @note Requiere `PhotonNetwork.AutomaticallySyncScene = true`.
-     */
+    // --- MODO MULTIJUGADOR ---
     public void GoLobby()
     {
-        // Carga sincronizada hacia el Lobby
+        PhotonNetwork.OfflineMode = false; // Aseguramos que el modo offline esté apagado
         PhotonNetwork.LoadLevel(lobbyScene);
     }
 
-    /**
-     * @brief Callback cuando te desconectas de Photon.
-     * @param cause Motivo de la desconexión (por si quieres mostrarlo en UI).
-     */
-    public override void OnDisconnected(DisconnectCause cause)
+    // --- MODO SINGLE PLAYER ---
+    public void GoSolo()
     {
-        Debug.Log($"Disconnected: {cause}");
-        playButton.interactable = false;
+        Debug.Log("Iniciando modo Solo...");
+
+        // Al activar esto, Photon corta internet y simula una conexión local.
+        // Esto automáticamente disparará OnConnectedToMaster() de nuevo, pero ahora en modo Offline.
+        PhotonNetwork.OfflineMode = true;
+    }
+
+    public override void OnJoinedRoom()
+    {
+        // Si estamos en modo solo, vamos directo al juego, saltándonos el Lobby
+        if (PhotonNetwork.OfflineMode)
+        {
+            SceneManager.LoadScene(gameScene);
+        }
     }
 }
