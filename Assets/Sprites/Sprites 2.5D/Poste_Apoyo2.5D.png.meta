@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5a75274ec128015489c80fee5327e1d9
+guid: ec52bc6ac1053834a8ee6226d1e05d86
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5674927266798900671
-    second: Road Lamp_25D_0
+      213: -25377374933594081
+    second: Poste_Apoyo2.5D_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Road Lamp_25D_0
+      name: Poste_Apoyo2.5D_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 8
-        width: 321
-        height: 709
+        x: 41
+        y: 16
+        width: 491
+        height: 389
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 14ae548c7bb9e31b0800000000000000
-      internalID: -5674927266798900671
+      spriteID: f1050c57967d5aff0800000000000000
+      internalID: -25377374933594081
       vertices: []
       indices: 
       edges: []
