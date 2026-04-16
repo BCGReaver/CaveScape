@@ -53,7 +53,7 @@ public class EnemysControllerSolo : MonoBehaviour
 
     Transform FindClosestPlayer()
     {
-        var players = FindObjectsOfType<PlayerController>();
+        var players = FindObjectsOfType<PlayerControllerSolo>();
         if (players == null || players.Length == 0) return null;
 
         return players
@@ -72,7 +72,7 @@ public class EnemysControllerSolo : MonoBehaviour
         if (col == null || !col.CompareTag("Player")) return;
 
         // Intentamos obtener el script de control del jugador
-        var playerScript = col.GetComponent<PlayerController>();
+        var playerScript = col.GetComponent<PlayerControllerSolo>();
         if (playerScript == null) return;
 
         lastHitTime = Time.time;

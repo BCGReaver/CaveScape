@@ -2,15 +2,22 @@ using UnityEngine;
 
 public class CrystalsManagerSolo : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static CrystalsManagerSolo Instance;
+    public int totalCrystals = 0;
+
+    void Awake()
     {
-        
+        Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public static void AddCrystal(int amount)
     {
-        
+        if (Instance != null)
+        {
+            Instance.totalCrystals += amount;
+            // Buscamos al jugador local para avisarle que actualice su UI
+            var player = FindObjectOfType<PlayerControllerSolo>();
+            if (player != null) player.actualizarCrystals();
+        }
     }
 }

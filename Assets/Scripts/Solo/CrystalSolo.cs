@@ -9,29 +9,36 @@ public class CrystalSolo : MonoBehaviourPun
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (consumed) return;
-        if (!other.CompareTag("Player")) return;
 
-        // --- LÓGICA DE VALIDACIÓN ---
-        if (PhotonNetwork.IsConnected)
+        // Verificamos si lo que tocó el cristal es el Jugador
+        if (other.CompareTag("Player"))
         {
-            var playerPV = other.GetComponent<PhotonView>();
-            // En red, solo el dueño del player que lo toca puede "recomogerlo"
-            if (playerPV == null || !playerPV.IsMine) return;
-        }
+            // Intentamos obtener el script del jugador
+            PlayerControllerSolo player = other.GetComponent<PlayerControllerSolo>();
 
-        // Si llegamos aquí, es porque o no hay red (Single Player) 
-        // o soy el dueño en Multiplayer.
-        Collect();
+            if (player != null)
+            {
+                // Verificación de red (si estamos en multiplayer)
+                if (PhotonNetwork.IsConnected)
+                {
+                    var playerPV = player.GetComponent<PhotonView>();
+                    if (playerPV == null || !playerPV.IsMine) return;
+                }
+
+                // SI PASA LAS PRUEBAS: Recoger
+                Collect(player);
+            }
+        }
     }
 
-    private void Collect()
+    private void Collect(PlayerControllerSolo player)
     {
         consumed = true;
 
-        // Sumar al manager (asegúrate de que TeamCrystalsManager funcione offline)
-        TeamCrystalsManager.AddCrystal(1);
+        // LLAMADA CLAVE: Le decimos al script del jugador que sume el cristal
+        player.actualizarCrystals();
 
-        // --- DESTRUCCIÓN HÍBRIDA ---
+        // Destrucción Híbrida
         if (PhotonNetwork.IsConnected)
         {
             if (PhotonNetwork.IsMasterClient)
@@ -41,7 +48,6 @@ public class CrystalSolo : MonoBehaviourPun
         }
         else
         {
-            // En Single Player, un simple Destroy de Unity basta
             Destroy(gameObject);
         }
     }
@@ -49,7 +55,6 @@ public class CrystalSolo : MonoBehaviourPun
     [PunRPC]
     private void RPC_RequestDestroy()
     {
-        // Solo se ejecuta en el MasterClient cuando un cliente toca el cristal
         if (PhotonNetwork.IsMasterClient)
             PhotonNetwork.Destroy(gameObject);
     }
