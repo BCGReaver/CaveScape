@@ -1,31 +1,28 @@
 using UnityEngine;
 using Photon.Pun;
 
-[RequireComponent(typeof(Collider2D))]
 public class CrystalSolo : MonoBehaviourPun
 {
-    private bool consumed;
+    private bool consumed = false;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (consumed) return;
 
-        // Verificamos si lo que tocó el cristal es el Jugador
+        // Importante: Asegúrate de que el Player tenga el Tag "Player"
         if (other.CompareTag("Player"))
         {
-            // Intentamos obtener el script del jugador
             PlayerControllerSolo player = other.GetComponent<PlayerControllerSolo>();
 
             if (player != null)
             {
-                // Verificación de red (si estamos en multiplayer)
-                if (PhotonNetwork.IsConnected)
+                // Si hay red, solo el dueño del personaje puede recogerlo
+                if (PhotonNetwork.IsConnected && photonView != null)
                 {
-                    var playerPV = player.GetComponent<PhotonView>();
-                    if (playerPV == null || !playerPV.IsMine) return;
+                    // En modo Solo, esto suele ser true o no existir
+                    if (player.photonView != null && !player.photonView.IsMine) return;
                 }
 
-                // SI PASA LAS PRUEBAS: Recoger
                 Collect(player);
             }
         }
@@ -34,17 +31,18 @@ public class CrystalSolo : MonoBehaviourPun
     private void Collect(PlayerControllerSolo player)
     {
         consumed = true;
+        Debug.Log("Cristal recogido");
 
-        // LLAMADA CLAVE: Le decimos al script del jugador que sume el cristal
+        // Sumamos al contador del jugador
         player.actualizarCrystals();
 
-        // Destrucción Híbrida
-        if (PhotonNetwork.IsConnected)
+        // Destrucción
+        if (PhotonNetwork.IsConnected && photonView != null)
         {
             if (PhotonNetwork.IsMasterClient)
                 PhotonNetwork.Destroy(gameObject);
             else
-                photonView.RPC(nameof(RPC_RequestDestroy), RpcTarget.MasterClient);
+                photonView.RPC("RPC_RequestDestroy", RpcTarget.MasterClient);
         }
         else
         {

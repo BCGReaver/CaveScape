@@ -798,8 +798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   multiplayerButton: {fileID: 937196557}
   soloButton: {fileID: 862997107}
-  lobbyScene: Lobby
-  gameScene: Game
+  gameScene: Solo
 --- !u!4 &309535140
 Transform:
   m_ObjectHideFlags: 0
@@ -827,7 +826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e91277ee5e61a94aafe39a807ead8cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pause: {fileID: 0}
+  pauseMenu: {fileID: 0}
 --- !u!1 &320896934
 GameObject:
   m_ObjectHideFlags: 0

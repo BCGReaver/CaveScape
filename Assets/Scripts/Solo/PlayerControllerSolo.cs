@@ -37,10 +37,26 @@ public class PlayerControllerSolo : MonoBehaviourPun
     [SerializeField] private string winCanvasTag = "HUD_WinCanvas";
 
     // Propiedad m�gica: Si no hay internet/Photon, somos "due�os" por defecto.
-    private bool IsLocalControl => !PhotonNetwork.IsConnected || photonView.IsMine;
+    // Si no hay photonView (modo solo total) o si es mío, tenemos control.
+    private bool IsLocalControl => photonView == null || !PhotonNetwork.IsConnected || photonView.IsMine;
 
     void Start()
     {
+        
+        // Si estamos en la escena "Solo", podemos ignorar a Photon
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Solo")
+            {
+         // Esto es un truco: si no hay photonView, el script seguirá
+        Debug.Log("Modo Solo detectado: Control habilitado");
+        }
+            // ... resto de tu código
+        
+        bool isStandalone = (photonView == null || !PhotonNetwork.IsConnected);
+
+        if (isStandalone || photonView.IsMine)
+        {
+            // ... (tu código de inicialización de UI)
+        }
         rb = GetComponent<Rigidbody2D>();
 
         if (IsLocalControl)
@@ -159,10 +175,13 @@ public class PlayerControllerSolo : MonoBehaviourPun
 
     public void actualizarCrystals()
     {
-        if (!IsLocalControl) return;
-
+        // Quitamos el IsLocalControl de aquí para que el cristal pueda llamarlo
+        // sin que Photon ponga trabas
         crystals++;
+        Debug.Log("Crystals actuales: " + crystals);
+
         if (crystalText) crystalText.text = crystals + " x";
+
         if (crystals >= 30)
         {
             TryShowWin();
@@ -236,5 +255,14 @@ public class PlayerControllerSolo : MonoBehaviourPun
         final_Canvas = lose;
         won_Canvas = win;
         actualizarCorazones();
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Asumiendo que tus cristales tienen el Tag "Crystal"
+        if (collision.CompareTag("Crystal"))
+        {
+            actualizarCrystals();
+            Destroy(collision.gameObject); // Borra el cristal del mapa
+        }
     }
 }

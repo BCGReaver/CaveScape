@@ -7756,19 +7756,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3356603181447226637, guid: ed03bb4a5b7d760479beba919584bfb0, type: 3}
       propertyPath: m_Size.x
-      value: 0.56745005
+      value: 0.59
       objectReference: {fileID: 0}
     - target: {fileID: 3356603181447226637, guid: ed03bb4a5b7d760479beba919584bfb0, type: 3}
       propertyPath: m_Size.y
-      value: 1.0426884
+      value: 0.81
       objectReference: {fileID: 0}
     - target: {fileID: 3356603181447226637, guid: ed03bb4a5b7d760479beba919584bfb0, type: 3}
       propertyPath: m_Offset.x
-      value: -0.08371681
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3356603181447226637, guid: ed03bb4a5b7d760479beba919584bfb0, type: 3}
       propertyPath: m_Offset.y
-      value: 0.029472485
+      value: -0.13
       objectReference: {fileID: 0}
     - target: {fileID: 4059947530251486645, guid: ed03bb4a5b7d760479beba919584bfb0, type: 3}
       propertyPath: m_Enabled
@@ -14170,7 +14170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e91277ee5e61a94aafe39a807ead8cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pause: {fileID: 243250926}
+  pauseMenu: {fileID: 0}
 --- !u!4 &2130978949
 Transform:
   m_ObjectHideFlags: 0
