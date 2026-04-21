@@ -19,6 +19,8 @@ public class EnemysControllerSolo : MonoBehaviour
     float lastHitTime = -999f;
     Transform target;
 
+    bool hasScreamed = false; // Para que no suene en cada frame del Update
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -36,14 +38,30 @@ public class EnemysControllerSolo : MonoBehaviour
         if (target != null)
         {
             float dist = Vector2.Distance(transform.position, target.position);
+
             if (dist <= detectionRadius)
             {
+                // --- Lógica del Audio ---
+                if (!hasScreamed)
+                {
+                    if (AudioManager.Instance != null)
+                        AudioManager.Instance.PlaySFXVariable(AudioManager.Instance.ghostWakeUp);
+                    hasScreamed = true;
+                }
+
+                // --- Lógica de Movimiento ---
                 Vector2 dir = (target.position - transform.position).normalized;
+
                 if (dir.x < 0) transform.localScale = new Vector3(-1, 1, 1);
                 else if (dir.x > 0) transform.localScale = new Vector3(1, 1, 1);
 
                 movement = dir;
                 inMovement = true;
+            }
+            else
+            {
+                // IMPORTANTE: Si sale del radio, permitimos que vuelva a gritar la próxima vez
+                hasScreamed = false;
             }
         }
 

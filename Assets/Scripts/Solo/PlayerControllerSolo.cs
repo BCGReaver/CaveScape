@@ -90,6 +90,9 @@ public class PlayerControllerSolo : MonoBehaviourPun
 
             if (onFloor && Input.GetKeyDown(KeyCode.Space) && !receivingDamage)
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.jump);
         }
 
         if (Input.GetMouseButtonDown(0) && !attacking && onFloor)
@@ -132,6 +135,10 @@ public class PlayerControllerSolo : MonoBehaviourPun
     public void receiveDamage(Vector2 direction, int amountDamage)
     {
         if (!IsLocalControl) return;
+
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.getHit);
+
         if (receivingDamage) return;
 
         receivingDamage = true;
@@ -140,6 +147,7 @@ public class PlayerControllerSolo : MonoBehaviourPun
 
         Vector2 rebound = new Vector2(transform.position.x - direction.x, 1).normalized;
         rb.AddForce(rebound * reboundForce, ForceMode2D.Impulse);
+
 
         if (vida <= 0)
         {
@@ -264,5 +272,11 @@ public class PlayerControllerSolo : MonoBehaviourPun
             actualizarCrystals();
             Destroy(collision.gameObject); // Borra el cristal del mapa
         }
+    }
+
+    public void PlayFootstepSound()
+    {
+        if (onFloor && AudioManager.Instance != null)
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.footsteps);
     }
 }

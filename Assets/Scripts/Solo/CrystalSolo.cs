@@ -32,6 +32,9 @@ public class CrystalSolo : MonoBehaviourPun
     {
         consumed = true;
         Debug.Log("Cristal recogido");
+        // Llamamos al manager
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.crystalCollect);
 
         // Sumamos al contador del jugador
         player.actualizarCrystals();
