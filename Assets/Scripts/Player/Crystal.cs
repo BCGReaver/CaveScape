@@ -46,18 +46,27 @@ public class Crystal : MonoBehaviourPun
         if (!other.CompareTag("Player")) return;
 
         var playerPV = other.GetComponent<PhotonView>();
-        if (playerPV == null || !playerPV.IsMine) return; // solo el dueño procesa
+        if (playerPV == null || !playerPV.IsMine) return;
 
         consumed = true;
 
-        // Suma al total (ajusta internamente si lo llevas por equipo o por jugador)
+        // --- AUDIO EN RED ---
+        // Mandamos el sonido a todos antes de destruir el objeto
+        photonView.RPC(nameof(RPC_PlayCrystalSound), RpcTarget.All);
+
         TeamCrystalsManager.AddCrystal(1);
 
-        // Destruir el cristal de forma autoritativa
         if (PhotonNetwork.IsMasterClient)
             PhotonNetwork.Destroy(gameObject);
         else
             photonView.RPC(nameof(RPC_RequestDestroy), RpcTarget.MasterClient);
+    }
+
+    [PunRPC]
+    void RPC_PlayCrystalSound()
+    {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.crystalCollect);
     }
 
     /**

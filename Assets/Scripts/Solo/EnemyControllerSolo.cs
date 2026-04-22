@@ -111,7 +111,8 @@ public class EnemysControllerSolo : MonoBehaviour
         }
         else
         {
-            // MODO SINGLE PLAYER: Llamamos a la función de daño directamente
+            // MODO SINGLE
+            // ER: Llamamos a la función de daño directamente
             // Nota: Asegúrate de que RPC_ReceiveDamage sea 'public' en PlayerController
             playerScript.RPC_ReceiveDamage(knockbackDir, contactDamage);
         }

@@ -156,7 +156,14 @@ public class PlayerController : MonoBehaviourPun
             onFloor = hit.collider != null;
 
             if (onFloor && Input.GetKeyDown(KeyCode.Space) && !receivingDamage)
+            {
+                // Aplicamos fuerza una sola vez
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
+                // --- SALTO SINCRONIZADO ---
+                // Mandamos el sonido a todos los jugadores
+                photonView.RPC(nameof(RPC_PlayJumpSound), RpcTarget.All);
+            }
         }
 
         if (Input.GetMouseButtonDown(0) && !attacking && onFloor)
@@ -206,6 +213,13 @@ public class PlayerController : MonoBehaviourPun
         receiveDamage(direction, amountDamage);
     }
 
+    [PunRPC]
+    void RPC_PlayJumpSound()
+    {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.jump);
+    }
+
     /**
      * @brief Lógica local de recibir daño: resta vida, actualiza HUD y aplica rebote.
      * @param direction Dirección desde donde vino el golpe.
@@ -217,6 +231,9 @@ public class PlayerController : MonoBehaviourPun
      */
     public void receiveDamage(Vector2 direction, int amountDamage)
     {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.getHit);
+
         if (!photonView.IsMine) return;
         if (receivingDamage) return;
 

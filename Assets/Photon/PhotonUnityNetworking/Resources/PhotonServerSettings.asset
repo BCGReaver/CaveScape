@@ -44,6 +44,9 @@ MonoBehaviour:
   - RPC_RequestDestroy
   - RPC_MasterAdd
   - RPC_ReceiveDamage
+  - RPC_PlayGhostScream
+  - RPC_PlayCrystalSound
+  - RPC_PlayJumpSound
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

@@ -21,6 +21,7 @@ using Photon.Pun;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
+
 /**
  * @class EnemysController
  * @brief Controla el movimiento de persecución y el daño por contacto del enemigo.
@@ -53,6 +54,10 @@ public class EnemysController : MonoBehaviour
     /// @brief Referencia al jugador que estamos persiguiendo.
     Transform target;
 
+    float ghostVoiceCooldown = 8f;
+    float lastGhostVoiceTime = -99f;
+    PhotonView ghostPV; // Para mandar el grito por red
+
     /**
      * @brief Cachea referencias a Rigidbody2D y Animator.
      */
@@ -60,6 +65,7 @@ public class EnemysController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        ghostPV = GetComponent<PhotonView>(); // Cacheamos el PV
     }
 
     /**
@@ -83,6 +89,12 @@ public class EnemysController : MonoBehaviour
             float dist = Vector2.Distance(transform.position, target.position);
             if (dist <= detectionRadius)
             {
+                if (Time.time >= lastGhostVoiceTime + ghostVoiceCooldown)
+                {
+                    // Mandamos el grito a TODOS los jugadores
+                    ghostPV.RPC(nameof(RPC_PlayGhostScream), RpcTarget.All);
+                    lastGhostVoiceTime = Time.time;
+                }
                 Vector2 dir = (target.position - transform.position).normalized;
 
                 // Voltear sprite según la dirección X
@@ -99,6 +111,16 @@ public class EnemysController : MonoBehaviour
 
         // Animación de caminar/parado
         animator.SetBool("inMovement", inMovement);
+    }
+
+    [PunRPC]
+    void RPC_PlayGhostScream()
+    {
+        if (AudioManager.Instance != null)
+        {
+            // Usamos la función de duración que creamos antes
+            AudioManager.Instance.PlayShortSFX(AudioManager.Instance.ghostWakeUp, 2.5f);
+        }
     }
 
     /**
