@@ -31,15 +31,16 @@ public class CrystalSolo : MonoBehaviourPun
     private void Collect(PlayerControllerSolo player)
     {
         consumed = true;
-        Debug.Log("Cristal recogido");
-        // Llamamos al manager
+        Debug.Log("¡Cristal detectado y recogido!"); // Si esto no sale en consola, es problema de Rigidbody o Tag
+
+        // 1. Sonido
         if (AudioManager.Instance != null)
             AudioManager.Instance.PlaySFX(AudioManager.Instance.crystalCollect);
 
-        // Sumamos al contador del jugador
-        player.actualizarCrystals();
+        // 2. AVISAR AL MANAGER (Esto te faltaba)
+        CrystalsManagerSolo.AddCrystal(1);
 
-        // Destrucción
+        // 3. Destruir
         if (PhotonNetwork.IsConnected && photonView != null)
         {
             if (PhotonNetwork.IsMasterClient)
