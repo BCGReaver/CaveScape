@@ -20,6 +20,8 @@ public class EnemysControllerSolo : MonoBehaviour
     Transform target;
 
     bool hasScreamed = false; // Para que no suene en cada frame del Update
+    float ghostVoiceCooldown = 5f; // Tiempo de espera
+    float lastGhostVoiceTime = -99f; // Cuándo sonó por última vez
 
     void Awake()
     {
@@ -41,12 +43,15 @@ public class EnemysControllerSolo : MonoBehaviour
 
             if (dist <= detectionRadius)
             {
-                // --- Lógica del Audio ---
-                if (!hasScreamed)
+                if (Time.time >= lastGhostVoiceTime + ghostVoiceCooldown)
                 {
                     if (AudioManager.Instance != null)
-                        AudioManager.Instance.PlaySFXVariable(AudioManager.Instance.ghostWakeUp);
-                    hasScreamed = true;
+                    {
+                        // Cambiamos PlaySFXVariable por esta nueva lógica
+                        // 2.0f es la duración en segundos que tú vas a calibrar
+                        AudioManager.Instance.StartCoroutine(AudioManager.Instance.PlayAndStop(AudioManager.Instance.ghostWakeUp, 2.0f));
+                    }
+                    lastGhostVoiceTime = Time.time;
                 }
 
                 // --- Lógica de Movimiento ---

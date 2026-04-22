@@ -274,9 +274,35 @@ public class PlayerControllerSolo : MonoBehaviourPun
         }
     }
 
-    public void PlayFootstepSound()
+    /*public void PlayFootstepSound()
     {
         if (onFloor && AudioManager.Instance != null)
             AudioManager.Instance.PlaySFX(AudioManager.Instance.footsteps);
+    }*/
+
+    public void PlayFootstepSound()
+    {
+        if (onFloor && AudioManager.Instance != null)
+        {
+            // El pitch variable para que no canse
+            float randomPitch = Random.Range(0.9f, 1.1f);
+
+            // Llamamos a la rutina: audio de pasos, duración de 0.4 segundos
+            StartCoroutine(PlayStepCut(AudioManager.Instance.footsteps, 0.4f, randomPitch));
+        }
+    }
+
+    private System.Collections.IEnumerator PlayStepCut(AudioClip clip, float duration, float pitch)
+    {
+        GameObject tempStep = new GameObject("StepAudio");
+        AudioSource source = tempStep.AddComponent<AudioSource>();
+        source.clip = clip;
+        source.pitch = pitch;
+        source.Play();
+
+        yield return new WaitForSeconds(duration);
+
+        source.Stop();
+        Destroy(tempStep);
     }
 }
