@@ -122,7 +122,7 @@ public class LobbyController : MonoBehaviourPunCallbacks
      * @details
      * Solo corre si ya estás conectado y dentro del Lobby. Si no, muestra en qué estado de red vas.
      */
-    public void QuickPlay()
+    /*public void QuickPlay()
     {
         // 3) Solo buscamos sala si YA estamos listos
         if (!PhotonNetwork.IsConnectedAndReady || !PhotonNetwork.InLobby)
@@ -133,6 +133,15 @@ public class LobbyController : MonoBehaviourPunCallbacks
 
         statusText.text = "Buscando sala...";
         PhotonNetwork.JoinRandomRoom();
+    }*/
+    public void QuickPlay()
+    {
+        if (!PhotonNetwork.IsConnectedAndReady || !PhotonNetwork.InLobby) return;
+
+        statusText.text = "Entrando a Sala de Pruebas...";
+        // En lugar de JoinRandom, usamos JoinOrCreate con un nombre fijo
+        RoomOptions opts = new RoomOptions { MaxPlayers = 2 };
+        PhotonNetwork.JoinOrCreateRoom("SalaSecreta", opts, TypedLobby.Default);
     }
 
     /**
